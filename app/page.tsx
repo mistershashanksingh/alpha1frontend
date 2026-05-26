@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Check, Lock, ShieldAlert, ClipboardCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Alpha1 IT Solutions — Enterprise Networking & Cybersecurity",
@@ -20,13 +21,19 @@ const TESTIMONIALS = [
   { quote: "The 24*7 support we receive from Alpha1 is exceptional. They are truly an extension of our own IT department.", author: "Operations Head, Manufacturing Corp" },
 ];
 
+const SECURITY_METRICS = [
+  { Icon: Lock,            label: "Data Encrypted",   val: "100%" },
+  { Icon: ShieldAlert,     label: "Threats Blocked",  val: "99.9%" },
+  { Icon: ClipboardCheck,  label: "Compliance Ready", val: "ISO 27001" },
+];
+
 export default function HomePage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
       <section style={{ minHeight:"100vh", display:"flex", alignItems:"center", justifyContent:"center", padding:"120px 24px 80px", textAlign:"center" }}>
         <div style={{ maxWidth:860, margin:"0 auto" }}>
-          <div className="section-badge anim-fade delay-1">🌐 Enterprise IT Solutions &amp; Consulting</div>
+          <div className="section-badge anim-fade delay-1">Enterprise IT Solutions &amp; Consulting</div>
           <h1 className="anim-fade-up delay-2" style={{ fontSize:"clamp(36px,6vw,72px)", fontWeight:800, lineHeight:1.1, marginBottom:12 }}>
             <span className="gradient-text">Alpha1 IT Solutions</span>
           </h1>
@@ -62,7 +69,7 @@ export default function HomePage() {
       <section className="cyber-section" style={{ padding:"80px 24px" }}>
         <div className="container" style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))", gap:56, alignItems:"center" }}>
           <div>
-            <div className="section-badge">🛡️ Cybersecurity Spotlight</div>
+            <div className="section-badge">Cybersecurity Spotlight</div>
             <h2 className="section-title">Protect Your Business with <span>Zeperon & Cyberstanc</span></h2>
             <div className="divider" />
             <p style={{ color:"rgba(255,255,255,0.68)", lineHeight:1.85, fontSize:15, marginBottom:24 }}>
@@ -71,7 +78,7 @@ export default function HomePage() {
             <div style={{ display:"flex", flexDirection:"column", gap:12, marginBottom:32 }}>
               {["\"Never trust, always verify\" ZTNA principles","Real-time data monitoring & threat detection","Advanced endpoint protection & control","Granular application-level access control"].map((f, i) => (
                 <div key={i} style={{ display:"flex", gap:10, alignItems:"center" }}>
-                  <span style={{ color:"#00d4ff", fontWeight:700 }}>✓</span>
+                  <Check size={16} color="#00d4ff" strokeWidth={3} />
                   <span style={{ fontSize:14, color:"rgba(255,255,255,0.7)" }}>{f}</span>
                 </div>
               ))}
@@ -79,13 +86,11 @@ export default function HomePage() {
             <Link href="/solutions" className="btn-primary">Explore Security Solutions</Link>
           </div>
           <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
-            {[
-              { icon:"🔒", label:"Data Encrypted",   val:"100%" },
-              { icon:"🚨", label:"Threats Blocked",  val:"99.9%" },
-              { icon:"📋", label:"Compliance Ready", val:"ISO 27001" },
-            ].map((m, i) => (
+            {SECURITY_METRICS.map((m, i) => (
               <div key={i} className="glass-card" style={{ padding:"20px 24px", display:"flex", alignItems:"center", gap:20 }}>
-                <div style={{ fontSize:32, width:50, textAlign:"center" }}>{m.icon}</div>
+                <div style={{ width:50, display:"flex", alignItems:"center", justifyContent:"center", color:"#00d4ff" }}>
+                  <m.Icon size={32} strokeWidth={1.8} />
+                </div>
                 <div>
                   <div style={{ fontSize:22, fontWeight:800, background:"linear-gradient(135deg,#1e88e5,#00d4ff)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>{m.val}</div>
                   <div style={{ fontSize:13, color:"rgba(255,255,255,0.55)" }}>{m.label}</div>
@@ -100,7 +105,7 @@ export default function HomePage() {
       <section style={{ padding:"80px 24px" }}>
         <div className="container">
           <div style={{ textAlign:"center", marginBottom:52 }}>
-            <div className="section-badge">💬 Client Feedback</div>
+            <div className="section-badge">Client Feedback</div>
             <h2 className="section-title">What Our <span>Clients Say</span></h2>
             <p className="section-subtitle" style={{ margin:"0 auto" }}>
               Trusted by leading enterprises to deliver mission-critical IT infrastructure.
@@ -126,7 +131,7 @@ export default function HomePage() {
       <section style={{ padding:"40px 24px 80px" }}>
         <div className="container">
           <div className="glass-md" style={{ borderRadius:20, padding:"56px 40px", textAlign:"center" }}>
-            <div className="section-badge" style={{ justifyContent:"center" }}>🚀 Get Started</div>
+            <div className="section-badge" style={{ justifyContent:"center" }}>Get Started</div>
             <h2 style={{ fontSize:"clamp(24px,3.5vw,42px)", fontWeight:800, color:"#fff", marginBottom:16 }}>
               Ready to Transform Your IT Infrastructure?
             </h2>

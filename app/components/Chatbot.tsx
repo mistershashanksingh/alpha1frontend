@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
+import { Bot, Send, X, MessageCircle } from "lucide-react";
 
 type Msg = { role: "bot" | "user"; text: string };
 
 const INITIAL: Msg[] = [
-  { role: "bot", text: "👋 Hi! I'm Alpha1's AI Assistant. How can I help you today?" },
+  { role: "bot", text: "Hi! I'm Alpha1's AI Assistant. How can I help you today?" },
   { role: "bot", text: "You can ask me about our services, solutions, partnerships, or how to contact our team." },
 ];
 
@@ -50,7 +51,9 @@ export default function Chatbot() {
         <div className="chatbot-window">
           <div className="chatbot-header">
             <div style={{ display:"flex", alignItems:"center", gap:10 }}>
-              <div style={{ width:36, height:36, borderRadius:"50%", background:"linear-gradient(135deg,#1e88e5,#00d4ff)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:18 }}>🤖</div>
+              <div style={{ width:36, height:36, borderRadius:"50%", background:"linear-gradient(135deg,#1e88e5,#00d4ff)", display:"flex", alignItems:"center", justifyContent:"center", color:"#fff" }}>
+                <Bot size={20} />
+              </div>
               <div>
                 <div style={{ fontWeight:700, fontSize:14, color:"#fff" }}>Alpha1 AI Assistant</div>
                 <div style={{ fontSize:11, color:"rgba(0,212,255,0.8)" }}>● Online — Powered by AI</div>
@@ -72,14 +75,16 @@ export default function Chatbot() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && send()}
             />
-            <button className="chatbot-send" onClick={send}>➤</button>
+            <button className="chatbot-send" onClick={send} aria-label="Send message">
+              <Send size={16} />
+            </button>
           </div>
         </div>
       )}
 
       {/* FAB */}
       <button className="chatbot-fab" onClick={() => setOpen(!open)} aria-label="Open chat">
-        {open ? "✕" : "💬"}
+        {open ? <X size={22} /> : <MessageCircle size={22} />}
       </button>
     </>
   );

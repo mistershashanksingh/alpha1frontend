@@ -1,14 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Zap, Shield, HardDrive, Settings, Check, Image as ImageIcon } from "lucide-react";
+import type { ComponentType } from "react";
+import type { LucideProps } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Products & Services",
   description: "Explore Alpha1 IT Solutions' enterprise solutions — Zeperon ZTNA, Cyberstanc DLP, AmZetta Storage, and ManageEngine.",
 };
 
-const SOLUTIONS = [
+type Solution = {
+  Icon: ComponentType<LucideProps>;
+  title: string;
+  tag: string;
+  color: string;
+  desc: string;
+  features: string[];
+  imageAlt: string;
+};
+
+const SOLUTIONS: Solution[] = [
   {
-    icon: "⚡",
+    Icon: Zap,
     title: "Zeperon ZTNA Solution",
     tag: "Zero Trust Network Access",
     color: "#0891b2",
@@ -22,7 +35,7 @@ const SOLUTIONS = [
     imageAlt: "Hybrid network topology diagram for Zeperon ZTNA",
   },
   {
-    icon: "🛡️",
+    Icon: Shield,
     title: "Cyberstanc DLP Solution",
     tag: "Data Loss Prevention",
     color: "#7c3aed",
@@ -36,7 +49,7 @@ const SOLUTIONS = [
     imageAlt: "Real-time security monitoring dashboard for Cyberstanc DLP",
   },
   {
-    icon: "🗄️",
+    Icon: HardDrive,
     title: "AmZetta Storage Solution",
     tag: "Enterprise Storage",
     color: "#1e88e5",
@@ -50,7 +63,7 @@ const SOLUTIONS = [
     imageAlt: "Server rack storage infrastructure for AmZetta",
   },
   {
-    icon: "⚙️",
+    Icon: Settings,
     title: "Manage Engine",
     tag: "IT Management Suite",
     color: "#d97706",
@@ -70,7 +83,7 @@ export default function SolutionsPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <div className="section-badge" style={{ justifyContent:"center" }}>⚡ Products & Services</div>
+          <div className="section-badge" style={{ justifyContent:"center" }}>Products & Services</div>
           <h1 className="section-title" style={{ fontSize:"clamp(32px,5vw,60px)", textAlign:"center" }}>
             Enterprise <span>Solutions</span>
           </h1>
@@ -87,8 +100,8 @@ export default function SolutionsPage() {
               <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))", gap:40, alignItems:"start" }}>
                 <div>
                   <div style={{ display:"flex", alignItems:"center", gap:16, marginBottom:20 }}>
-                    <div style={{ width:64, height:64, borderRadius:14, background:`rgba(${s.color === "#1e88e5" ? "30,136,229" : s.color === "#7c3aed" ? "124,58,237" : s.color === "#0891b2" ? "8,145,178" : "217,119,6"},0.15)`, border:`1px solid ${s.color}33`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:28 }}>
-                      {s.icon}
+                    <div style={{ width:64, height:64, borderRadius:14, background:`rgba(${s.color === "#1e88e5" ? "30,136,229" : s.color === "#7c3aed" ? "124,58,237" : s.color === "#0891b2" ? "8,145,178" : "217,119,6"},0.15)`, border:`1px solid ${s.color}33`, display:"flex", alignItems:"center", justifyContent:"center", color:s.color }}>
+                      <s.Icon size={30} strokeWidth={1.8} />
                     </div>
                     <div>
                       <div style={{ fontSize:11, fontWeight:700, color:s.color, letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:4 }}>{s.tag}</div>
@@ -96,23 +109,23 @@ export default function SolutionsPage() {
                     </div>
                   </div>
                   <p style={{ fontSize:15, color:"rgba(255,255,255,0.65)", lineHeight:1.85, marginBottom:28 }}>{s.desc}</p>
-                  
+
                   <h4 style={{ fontSize:13, fontWeight:700, color:"rgba(255,255,255,0.45)", textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:16 }}>Core Capabilities</h4>
                   <ul style={{ listStyle:"none", display:"flex", flexDirection:"column", gap:10, marginBottom:28 }}>
                     {s.features.map((f, j) => (
                       <li key={j} style={{ display:"flex", gap:10, alignItems:"flex-start", fontSize:14, color:"rgba(255,255,255,0.7)" }}>
-                        <span style={{ color:s.color, fontWeight:700, flexShrink:0 }}>✓</span>
+                        <Check size={16} color={s.color} strokeWidth={3} style={{ flexShrink:0, marginTop:2 }} />
                         {f}
                       </li>
                     ))}
                   </ul>
-                  
+
                   <Link href="/contact" className="btn-primary">Enquire Now</Link>
                 </div>
-                
+
                 {/* Placeholder for realistic/hybrid images */}
                 <div style={{ height: "100%", minHeight: 300, background:"rgba(0,0,0,0.3)", border:"1px dashed rgba(255,255,255,0.2)", borderRadius:16, display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column", padding: 24, textAlign: "center" }}>
-                  <div style={{ fontSize: 40, marginBottom: 12 }}>🖼️</div>
+                  <ImageIcon size={40} color="rgba(255,255,255,0.55)" strokeWidth={1.5} style={{ marginBottom: 12 }} />
                   <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 14 }}>
                     [Hybrid/Realistic Image Placeholder]<br/>
                     <span style={{ fontSize: 12, opacity: 0.7 }}>{s.imageAlt}</span>
@@ -123,7 +136,7 @@ export default function SolutionsPage() {
           ))}
         </div>
       </section>
-      
+
       <section style={{ padding:"60px 24px 80px" }}>
         <div className="container">
           <div className="glass-md" style={{ borderRadius:18, padding:"48px 36px", textAlign:"center" }}>

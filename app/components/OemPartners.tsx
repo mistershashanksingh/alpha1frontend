@@ -2,13 +2,28 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { Cloud, Lock, Monitor, Lightbulb } from "lucide-react";
+import type { ComponentType } from "react";
+import type { LucideProps } from "lucide-react";
+
+type Partner = { name: string; fullName: string; logo: string };
+
+type Category = {
+  id: string;
+  label: string;
+  Icon: ComponentType<LucideProps>;
+  color: string;
+  bgFrom: string;
+  bgTo: string;
+  partners: Partner[];
+};
 
 // ─── Data — ordered exactly as requested (not alphabetical) ──────────────────
-const OEM_CATEGORIES = [
+const OEM_CATEGORIES: Category[] = [
   {
     id: "cloud",
     label: "Cloud & Infrastructure",
-    icon: "☁️",
+    Icon: Cloud,
     color: "#1e88e5",
     bgFrom: "rgba(246, 246, 246, 0.23)",
     bgTo: "rgba(226, 226, 226, 0.12)",
@@ -23,7 +38,7 @@ const OEM_CATEGORIES = [
   {
     id: "networking",
     label: "Networking & Security",
-    icon: "🔒",
+    Icon: Lock,
     color: "#7c3aed",
     bgFrom: "rgba(124,58,237,0.14)",
     bgTo: "rgba(124,58,237,0.04)",
@@ -41,7 +56,7 @@ const OEM_CATEGORIES = [
   {
     id: "hardware",
     label: "Hardware & Electronics",
-    icon: "🖥️",
+    Icon: Monitor,
     color: "#059669",
     bgFrom: "rgba(5,150,105,0.14)",
     bgTo: "rgba(5,150,105,0.04)",
@@ -56,7 +71,7 @@ const OEM_CATEGORIES = [
   {
     id: "software",
     label: "IT Services & Software",
-    icon: "💡",
+    Icon: Lightbulb,
     color: "#f59e0b",
     bgFrom: "rgba(245,158,11,0.14)",
     bgTo: "rgba(245,158,11,0.04)",
@@ -76,7 +91,7 @@ function LogoCard({
   partner,
   accent,
 }: {
-  partner: { name: string; fullName: string; logo: string };
+  partner: Partner;
   accent: string;
 }) {
   const [err, setErr] = useState(false);
@@ -136,7 +151,7 @@ export default function OemPartners() {
 
         {/* ── Section header ───────────────────────────────────────────── */}
         <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <div className="section-badge">🏭 OEM Alliance</div>
+          <div className="section-badge">OEM Alliance</div>
           <h2 className="section-title">
             Our <span>OEM Partners</span>
           </h2>
@@ -159,7 +174,9 @@ export default function OemPartners() {
               style={{ "--tab-color": cat.color } as React.CSSProperties}
               onClick={() => setActiveId(cat.id)}
             >
-              <span aria-hidden="true">{cat.icon}</span>
+              <span aria-hidden="true" style={{ display: "inline-flex", alignItems: "center" }}>
+                <cat.Icon size={16} />
+              </span>
               <span>{cat.label}</span>
               <span
                 className="oem-tab-count"
@@ -193,9 +210,13 @@ export default function OemPartners() {
               style={{
                 background: `${active.color}22`,
                 border: `1px solid ${active.color}44`,
+                color: active.color,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
-              {active.icon}
+              <active.Icon size={24} />
             </div>
             <div>
               <div
@@ -239,7 +260,9 @@ export default function OemPartners() {
               style={{ borderColor: `${cat.color}35` }}
               onClick={() => setActiveId(cat.id)}
             >
-              <span style={{ fontSize: 24 }}>{cat.icon}</span>
+              <span style={{ display: "inline-flex", alignItems: "center", color: cat.color }}>
+                <cat.Icon size={24} />
+              </span>
               <div style={{ textAlign: "left" }}>
                 <div style={{ fontWeight: 700, fontSize: 13, color: "#fff", marginBottom: 2 }}>
                   {cat.label}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import JobApplicationForm from "../components/JobApplicationForm";
+import { Check } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -21,7 +22,7 @@ export default function CareersPage() {
       {/* Hero */}
       <section className="page-hero">
         <div className="container">
-          <div className="section-badge" style={{ justifyContent:"center" }}>💼 Careers</div>
+          <div className="section-badge" style={{ justifyContent:"center" }}>Careers</div>
           <h1 className="section-title" style={{ fontSize:"clamp(32px,5vw,60px)", textAlign:"center" }}>
             Build Your Career at <span>Alpha1</span>
           </h1>
@@ -41,7 +42,9 @@ export default function CareersPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 20, marginTop: 40 }}>
             {["Continuous Training & Certifications", "Competitive Compensation & Benefits", "Global Enterprise Projects", "Hybrid/Flexible Work Environments"].map((perk, i) => (
               <div key={i} className="glass-card" style={{ padding: 20, background: "rgba(255,255,255,0.03)" }}>
-                <span style={{ color: "#00d4ff", fontSize: 24, display: "block", marginBottom: 12 }}>✓</span>
+                <div style={{ marginBottom: 12, color: "#00d4ff" }}>
+                  <Check size={24} strokeWidth={2.5} />
+                </div>
                 <span style={{ fontSize: 14, fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>{perk}</span>
               </div>
             ))}
@@ -53,7 +56,7 @@ export default function CareersPage() {
       <section style={{ padding:"80px 24px", background:"rgba(6,16,31,0.45)" }}>
         <div className="container">
           <div style={{ textAlign:"center", marginBottom:52 }}>
-            <div className="section-badge">📋 Openings</div>
+            <div className="section-badge">Openings</div>
             <h2 className="section-title">Current <span>Opportunities</span></h2>
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(320px,1fr))", gap:20 }}>

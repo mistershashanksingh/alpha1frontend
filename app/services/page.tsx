@@ -1,14 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HardDrive, Shield, Zap, Settings, Check } from "lucide-react";
+import type { ComponentType } from "react";
+import type { LucideProps } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Services",
   description: "Explore Alpha1 IT Solutions' enterprise services — AmZetta Storage, Cyberstanc DLP, Zeperon, and ManageEngine.",
 };
 
-const SERVICES = [
+type Service = {
+  Icon: ComponentType<LucideProps>;
+  title: string;
+  tag: string;
+  color: string;
+  desc: string;
+  features: string[];
+  useCases: string[];
+};
+
+const SERVICES: Service[] = [
   {
-    icon: "🗄️",
+    Icon: HardDrive,
     title: "AmZetta Storage Solutions",
     tag: "Enterprise Storage",
     color: "#1e88e5",
@@ -24,7 +37,7 @@ const SERVICES = [
     useCases: ["Data centres", "Backup & DR", "Virtualisation", "Media & entertainment"],
   },
   {
-    icon: "🛡️",
+    Icon: Shield,
     title: "Cyberstanc DLP",
     tag: "Data Loss Prevention",
     color: "#7c3aed",
@@ -40,7 +53,7 @@ const SERVICES = [
     useCases: ["BFSI", "Healthcare", "Government", "Manufacturing"],
   },
   {
-    icon: "⚡",
+    Icon: Zap,
     title: "Zeperon",
     tag: "Network Performance",
     color: "#0891b2",
@@ -56,7 +69,7 @@ const SERVICES = [
     useCases: ["Retail chains", "Multi-branch offices", "ISPs", "Cloud-first enterprises"],
   },
   {
-    icon: "⚙️",
+    Icon: Settings,
     title: "ManageEngine",
     tag: "IT Management Suite",
     color: "#d97706",
@@ -79,7 +92,7 @@ export default function ServicesPage() {
       {/* Page Hero */}
       <section className="page-hero">
         <div className="container">
-          <div className="section-badge" style={{ justifyContent:"center" }}>⚡ Our Solutions</div>
+          <div className="section-badge" style={{ justifyContent:"center" }}>Our Solutions</div>
           <h1 className="section-title" style={{ fontSize:"clamp(32px,5vw,60px)", textAlign:"center" }}>
             Enterprise <span>Technology Solutions</span>
           </h1>
@@ -97,8 +110,8 @@ export default function ServicesPage() {
               <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))", gap:40, alignItems:"start" }}>
                 <div>
                   <div style={{ display:"flex", alignItems:"center", gap:16, marginBottom:20 }}>
-                    <div style={{ width:64, height:64, borderRadius:14, background:`rgba(${s.color === "#1e88e5" ? "30,136,229" : s.color === "#7c3aed" ? "124,58,237" : s.color === "#0891b2" ? "8,145,178" : "217,119,6"},0.15)`, border:`1px solid ${s.color}33`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:28 }}>
-                      {s.icon}
+                    <div style={{ width:64, height:64, borderRadius:14, background:`rgba(${s.color === "#1e88e5" ? "30,136,229" : s.color === "#7c3aed" ? "124,58,237" : s.color === "#0891b2" ? "8,145,178" : "217,119,6"},0.15)`, border:`1px solid ${s.color}33`, display:"flex", alignItems:"center", justifyContent:"center", color:s.color }}>
+                      <s.Icon size={30} strokeWidth={1.8} />
                     </div>
                     <div>
                       <div style={{ fontSize:11, fontWeight:700, color:s.color, letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:4 }}>{s.tag}</div>
@@ -113,7 +126,7 @@ export default function ServicesPage() {
                   <ul style={{ listStyle:"none", display:"flex", flexDirection:"column", gap:10, marginBottom:28 }}>
                     {s.features.map((f, j) => (
                       <li key={j} style={{ display:"flex", gap:10, alignItems:"flex-start", fontSize:14, color:"rgba(255,255,255,0.7)" }}>
-                        <span style={{ color:s.color, fontWeight:700, marginTop:1, flexShrink:0 }}>✓</span>
+                        <Check size={16} color={s.color} strokeWidth={3} style={{ marginTop:2, flexShrink:0 }} />
                         {f}
                       </li>
                     ))}

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { MapPin, Phone, Mail } from "lucide-react";
+import { FaLinkedinIn, FaXTwitter, FaFacebookF, FaInstagram } from "react-icons/fa6";
 
 const LINKS = [
   { label:"Home", href:"/" },
@@ -34,10 +36,29 @@ export default function Footer() {
             <p style={{ fontSize:13, color:"rgba(255,255,255,0.55)", lineHeight:1.75, marginBottom:20 }}>
               Transforming businesses through cutting-edge networking, cybersecurity, and digital infrastructure solutions.
             </p>
-            <div style={{ display:"flex", gap:12 }}>
-              <a href="#" style={{ fontSize:16, color:"rgba(255,255,255,0.65)", textDecoration:"none", transition:"color 0.2s" }} aria-label="LinkedIn">🔗</a>
-              <a href="#" style={{ fontSize:16, color:"rgba(255,255,255,0.65)", textDecoration:"none", transition:"color 0.2s", fontFamily:"sans-serif", fontWeight:"bold" }} aria-label="X (formerly Twitter)">𝕏</a>
-              <a href="#" style={{ fontSize:16, color:"rgba(255,255,255,0.65)", textDecoration:"none", transition:"color 0.2s" }} aria-label="Facebook">📘</a>
+            <div style={{ display:"flex", gap:10, alignItems:"center" }}>
+              {[
+                { Icon: FaLinkedinIn,  label: "LinkedIn",  href: "#" },
+                { Icon: FaXTwitter,    label: "X",         href: "#" },
+                { Icon: FaFacebookF,   label: "Facebook",  href: "#" },
+                { Icon: FaInstagram,   label: "Instagram", href: "#" },
+              ].map(({ Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  style={{
+                    width: 34, height: 34, borderRadius: "50%",
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "rgba(255,255,255,0.75)",
+                    display: "inline-flex", alignItems: "center", justifyContent: "center",
+                    textDecoration: "none", transition: "all 0.2s",
+                  }}
+                >
+                  <Icon size={15} />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -74,17 +95,17 @@ export default function Footer() {
             <h4 style={{ fontSize:13, fontWeight:700, color:"rgba(255,255,255,0.5)", textTransform:"uppercase", letterSpacing:"0.1em", marginBottom:18 }}>Contact Us</h4>
             <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
               <div style={{ display:"flex", gap:10, alignItems:"flex-start" }}>
-                <span style={{ fontSize:16, marginTop:2 }}>📍</span>
+                <MapPin size={16} style={{ marginTop:2, flexShrink:0, color:"rgba(255,255,255,0.65)" }} />
                 <span style={{ fontSize:13, color:"rgba(255,255,255,0.6)", lineHeight:1.6 }}>
                   [Company Address Placeholder],<br />India
                 </span>
               </div>
               <div style={{ display:"flex", gap:10, alignItems:"center" }}>
-                <span style={{ fontSize:16 }}>📞</span>
+                <Phone size={16} style={{ flexShrink:0, color:"rgba(255,255,255,0.65)" }} />
                 <span style={{ fontSize:13, color:"rgba(255,255,255,0.6)" }}>+91 [Phone Placeholder]</span>
               </div>
               <div style={{ display:"flex", gap:10, alignItems:"center" }}>
-                <span style={{ fontSize:16 }}>✉️</span>
+                <Mail size={16} style={{ flexShrink:0, color:"rgba(255,255,255,0.65)" }} />
                 <a href="mailto:info@alpha1itsolutions.com" style={{ fontSize:13, color:"#00d4ff", textDecoration:"none" }}>
                   info@alpha1itsolutions.com
                 </a>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Send } from "lucide-react";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -56,8 +57,8 @@ export default function ContactForm() {
             <label htmlFor="msg" style={{ fontSize:12, fontWeight:600, color:"rgba(255,255,255,0.55)", display:"block", marginBottom:6, textTransform:"uppercase", letterSpacing:"0.06em" }}>Message</label>
             <textarea id="msg" rows={4} required placeholder="Tell us about your project or requirements…" style={{ width:"100%", background:"rgba(255,255,255,0.06)", border:"1px solid rgba(255,255,255,0.12)", borderRadius:8, padding:"10px 14px", color:"#fff", fontSize:14, outline:"none", fontFamily:"inherit", resize:"vertical" }} />
           </div>
-          <button type="submit" className="btn-primary" style={{ justifyContent:"center" }}>
-            Send Message ✈️
+          <button type="submit" className="btn-primary" style={{ justifyContent:"center", display:"inline-flex", alignItems:"center", gap:8 }}>
+            Send Message <Send size={16} />
           </button>
         </form>
       )}

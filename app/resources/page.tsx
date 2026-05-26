@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { TriangleAlert, Lightbulb, CircleCheckBig } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -55,7 +56,7 @@ export default function ResourcesPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <div className="section-badge" style={{ justifyContent:"center" }}>📚 Resources</div>
+          <div className="section-badge" style={{ justifyContent:"center" }}>Resources</div>
           <h1 className="section-title" style={{ fontSize:"clamp(32px,5vw,60px)", textAlign:"center" }}>
             Case Studies <span>&amp; Insights</span>
           </h1>
@@ -69,7 +70,7 @@ export default function ResourcesPage() {
       <section style={{ padding:"40px 24px 80px" }}>
         <div className="container">
           <div style={{ textAlign:"center", marginBottom:52 }}>
-            <div className="section-badge">📊 Success Stories</div>
+            <div className="section-badge">Success Stories</div>
             <h2 className="section-title">Client <span>Case Studies</span></h2>
           </div>
           <div style={{ display:"flex", flexDirection:"column", gap:32 }}>
@@ -77,25 +78,25 @@ export default function ResourcesPage() {
               <div key={i} className="glass-card" style={{ padding: 40 }}>
                 <div style={{ fontSize: 12, fontWeight: 700, color: "#00d4ff", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>{cs.tag}</div>
                 <h3 style={{ fontSize: "clamp(20px, 2.5vw, 28px)", fontWeight: 800, color: "#fff", marginBottom: 32 }}>{cs.title}</h3>
-                
+
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", gap: 24 }}>
                   <div style={{ background: "rgba(255,255,255,0.03)", padding: 24, borderRadius: 12, border: "1px solid rgba(255,255,255,0.08)" }}>
                     <h4 style={{ color: "#ef4444", fontSize: 16, fontWeight: 700, marginBottom: 12, display: "flex", alignItems: "center", gap: 8 }}>
-                      <span>⚠️</span> The Problem
+                      <TriangleAlert size={18} /> The Problem
                     </h4>
                     <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 14, lineHeight: 1.7 }}>{cs.problem}</p>
                   </div>
-                  
+
                   <div style={{ background: "rgba(30,136,229,0.05)", padding: 24, borderRadius: 12, border: "1px solid rgba(30,136,229,0.15)" }}>
                     <h4 style={{ color: "#3b82f6", fontSize: 16, fontWeight: 700, marginBottom: 12, display: "flex", alignItems: "center", gap: 8 }}>
-                      <span>💡</span> The Solution
+                      <Lightbulb size={18} /> The Solution
                     </h4>
                     <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 14, lineHeight: 1.7 }}>{cs.solution}</p>
                   </div>
 
                   <div style={{ background: "rgba(16,185,129,0.05)", padding: 24, borderRadius: 12, border: "1px solid rgba(16,185,129,0.15)" }}>
                     <h4 style={{ color: "#10b981", fontSize: 16, fontWeight: 700, marginBottom: 12, display: "flex", alignItems: "center", gap: 8 }}>
-                      <span>✅</span> The Result
+                      <CircleCheckBig size={18} /> The Result
                     </h4>
                     <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 14, lineHeight: 1.7 }}>{cs.result}</p>
                   </div>
@@ -110,7 +111,7 @@ export default function ResourcesPage() {
       <section style={{ padding:"80px 24px", background:"rgba(6,16,31,0.45)" }}>
         <div className="container">
           <div style={{ textAlign:"center", marginBottom:52 }}>
-            <div className="section-badge">📝 Blog & Insights</div>
+            <div className="section-badge">Blog & Insights</div>
             <h2 className="section-title">Latest <span>Articles</span></h2>
             <p className="section-subtitle" style={{ margin:"0 auto" }}>IT tips, cybersecurity updates, and solution guides from our experts.</p>
           </div>

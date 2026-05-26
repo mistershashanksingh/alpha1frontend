@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Rocket } from "lucide-react";
 
 export default function JobApplicationForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -58,8 +59,8 @@ export default function JobApplicationForm() {
             <label htmlFor="coverLetter" style={{ fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.6)", display: "block", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.06em" }}>Cover Letter / Brief Intro</label>
             <textarea id="coverLetter" rows={5} placeholder="Tell us why you'd be a great fit for Alpha1 IT Solutions..." required style={{ width: "100%", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 8, padding: "12px 16px", color: "#fff", fontSize: 15, outline: "none", fontFamily: "inherit", resize: "vertical" }} />
           </div>
-          <button type="submit" className="btn-primary" style={{ justifyContent: "center", padding: "14px 24px", fontSize: 16 }}>
-            Submit Application 🚀
+          <button type="submit" className="btn-primary" style={{ justifyContent: "center", padding: "14px 24px", fontSize: 16, display:"inline-flex", alignItems:"center", gap:8 }}>
+            Submit Application <Rocket size={18} />
           </button>
         </form>
       )}

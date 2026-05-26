@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { Search, Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -77,7 +78,7 @@ export default function Navbar() {
         <div style={{ display: "flex", gap: 16, alignItems: "center" }} className="hidden lg:flex">
           {/* Adjusted search bar background and text for light theme */}
           <form onSubmit={handleSearch} style={{ display: "flex", alignItems: "center", background: "rgba(0, 0, 0, 0.05)", borderRadius: 20, padding: "4px 12px", border: "1px solid rgba(0, 0, 0, 0.1)" }}>
-            <span style={{ fontSize: 14, color: "rgba(0, 0, 0, 0.4)", marginRight: 8 }}>🔍</span>
+            <Search size={14} color="rgba(0, 0, 0, 0.4)" style={{ marginRight: 8 }} />
             <input
               type="text"
               placeholder="Search..."
@@ -94,8 +95,8 @@ export default function Navbar() {
 
         {/* Adjusted mobile toggle button for light theme */}
         <button onClick={() => setOpen(!open)} aria-label="Toggle menu" className="lg:hidden"
-          style={{ background: "transparent", border: "1px solid rgba(0, 0, 0, 0.15)", borderRadius: 8, padding: "6px 10px", cursor: "pointer", color: "#333", fontSize: 20 }}>
-          {open ? "✕" : "☰"}
+          style={{ background: "transparent", border: "1px solid rgba(0, 0, 0, 0.15)", borderRadius: 8, padding: "6px 10px", cursor: "pointer", color: "#333", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -103,7 +104,7 @@ export default function Navbar() {
         <div style={{ background: "rgba(255, 255, 255, 0.98)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderTop: "1px solid rgba(0, 0, 0, 0.08)", padding: "20px 24px 28px", display: "flex", flexDirection: "column", gap: 18 }}>
           {/* Adjusted mobile search bar */}
           <form onSubmit={handleSearch} style={{ display: "flex", alignItems: "center", background: "rgba(0, 0, 0, 0.04)", borderRadius: 8, padding: "8px 12px", border: "1px solid rgba(0, 0, 0, 0.1)" }}>
-            <span style={{ fontSize: 14, color: "rgba(0, 0, 0, 0.4)", marginRight: 8 }}>🔍</span>
+            <Search size={14} color="rgba(0, 0, 0, 0.4)" style={{ marginRight: 8 }} />
             <input
               type="text"
               placeholder="Search..."
